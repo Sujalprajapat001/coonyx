@@ -31,7 +31,6 @@ const appConfig = {
     },
   },
 
-  // PostgreSQL configuration - Primary production database
   postgresql: {
     ...pgConfig,
   },
@@ -50,11 +49,6 @@ const appConfig = {
       colorize: true,
       timestamp: true,
     },
-    sentry: {
-      enabled: process.env.SENTRY_DSN ? true : false,
-      dsn: process.env.SENTRY_DSN,
-      environment: process.env.NODE_ENV || "development",
-    },
   },
 
   api: {
@@ -66,36 +60,37 @@ const appConfig = {
     },
     rateLimit: {
       windowMs: 15 * 60 * 1000,
-      max: 100,
+      max: 500, // Badhaya gaya hai dashboard load ke liye
     },
   },
 
   shop,
 
   features: {
+    // Core ClipNation Features
+    campaigns: true,          // Added for clipping management
+    verification: true,       // Added for social verification
+    leaderboard: true,        // Added for stats
+    payouts: true,            // Added for earnings
     
-    economy: true,                  
-    leveling: true,                 
-    moderation: true,               
-    logging: true,                  
-    welcome: true,                  
-
-    tickets: true,                  
-    giveaways: true,                
-    birthday: true,                 
-    counter: true,                  
-
-    verification: true,             
-    reactionRoles: true,            
-    joinToCreate: true,             
-
-    voice: true,                    
-    search: true,                   
-    tools: true,                    
-    utility: true,                  
-    community: true,                
-    fun: true,                      
-
+    // Original Features
+    economy: true,
+    leveling: true,
+    moderation: true,
+    logging: true,
+    welcome: true,
+    tickets: true,
+    giveaways: true,
+    birthday: true,
+    counter: true,
+    reactionRoles: true,
+    joinToCreate: true,
+    voice: true,
+    search: true,
+    tools: true,
+    utility: true,
+    community: true,
+    fun: true,
     music: true,
   },
 
